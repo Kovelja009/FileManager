@@ -1,10 +1,21 @@
 package paket;
 
+import Data.MyFile;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+
+/*
+
+<dependency>
+<groupId>com.komponente.project</groupId>
+<artifactId>specification</artifactId>
+<version>1.0-SNAPSHOT</version>
+<scope>provided</scope>
+</dependency>
+*/
 
 @Getter
 @Setter
@@ -23,9 +34,13 @@ public abstract class FileManager implements BasicOP, Search, Config{
 //        if(checkConfig(file))
 //            add(file);
 //    }
-
+    /**
+     * Save object in the specified collection of the storage.
+     *
+     * @param path nesto mojeeeesad sdfasfasfasdfsdaf
+     */
     @Override
-    // u implementaciji postaviti polja konfiguracije
+    // u implementaciji postaviti polja konfiguracije i pozvati saveConfig
     public boolean createRoot(String path) {
         Configuration configuration1 = new Configuration();
         if(createRoot(path, configuration1)){
@@ -68,7 +83,25 @@ public abstract class FileManager implements BasicOP, Search, Config{
         return mkdir(rootPath, name, n);
     }
 
-    String formatItem(String name, String ext, long size, String lastModified, String created){
-        return String.format(Locale.US, "%-25s %-5s %-10d %-12s %-10s%n", name, ext, size, lastModified, created);
+    @Override
+    public List<MyFile> searchAll(String path) {
+        List<MyFile> listFile = new ArrayList<>(searchDir(path));
+        listFile.addAll(searchSubDir(path));
+        return listFile;
+    }
+
+    @Override
+    public List<MyFile> filterByExt(String ext) {
+        return filterByExt(rootPath, ext);
+    }
+
+    // ako ne sadrzi barem jedno od imena iz liste, vraca false
+    @Override
+    public boolean existListOfName(String path, List<String> names) {
+        for(String name:names){
+            if(!existName(path, name))
+                return false;
+        }
+        return false;
     }
 }

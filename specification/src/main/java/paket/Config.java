@@ -6,6 +6,7 @@ public interface Config {
     public void setSize(long size);
     public void addExtension(String extension);
     public void setFile_n(int maxNumber);
+    // u implementaciji da sacuva u txt
     public void saveConfig(String path);
 
 }
