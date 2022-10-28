@@ -16,7 +16,7 @@ public interface Search {
     boolean existListOfName(String path, List<String> names);
     List<String> getParentPath(String name);
     List<MyFile> sortBy(List<String> paths, Metadata metadata);
-    List<MyFile> filterData(List<String> paths, List<Metadata> metadata);
+    List<String> filterData(List<String> paths, List<Metadata> metadata);
 //    modified false -> znaci da je createdDate true
     List<MyFile> filterByPeriod(String path, Date StartDate, Date EndDate, boolean modified);
 
