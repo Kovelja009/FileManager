@@ -4,6 +4,7 @@ import Data.MyFile;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
      */
     @Override
     // u implementaciji postaviti polja konfiguracije i pozvati saveConfig
-    public boolean createRoot(String path) {
+    public boolean createRoot(String path) throws IOException {
         Configuration configuration1 = new Configuration();
         if(createRoot(path, configuration1)){
             rootPath = path;
