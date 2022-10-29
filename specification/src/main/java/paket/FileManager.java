@@ -30,7 +30,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
     public FileManager(){
     }
 
-    abstract boolean checkConfig(String parentPath, String ext, long size);
+    abstract boolean checkConfig(String parentPath, String ext, long size, int n_number);
 //    public void globabladd(T file){
 //        if(checkConfig(file))
 //            add(file);
@@ -39,12 +39,13 @@ public abstract class FileManager implements BasicOP, Search, Config{
      * Save object in the specified collection of the storage.
      *
      * @param path nesto mojeeeesad sdfasfasfasdfsdaf
+     * @param name
      */
     @Override
     // u implementaciji postaviti polja konfiguracije i pozvati saveConfig
-    public boolean createRoot(String path) throws IOException {
+    public boolean createRoot(String path, String name) throws IOException {
         Configuration configuration1 = new Configuration();
-        if(createRoot(path, configuration1)){
+        if(createRoot(path, name, configuration1)){
             rootPath = path;
             configuration = configuration1;
             saveConfig(path);
@@ -57,7 +58,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
     public void setSize(long size) {
         configuration.setSize(size);
     }
-    // TODO da baca exception ako vec sadrži u listi
+
     @Override
     public void addExtension(String extension) {
         if(!configuration.getExcludedExt().contains(extension))
