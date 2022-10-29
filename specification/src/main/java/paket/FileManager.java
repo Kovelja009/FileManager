@@ -9,12 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-
+//TODO ukljuciti u settings.xml i pom.xml mogucnost da povlacis package sa github-a
 <dependency>
-<groupId>com.komponente.project</groupId>
-<artifactId>specification</artifactId>
-<version>1.0-SNAPSHOT</version>
-<scope>provided</scope>
+  <groupId>com.komponente.project</groupId>
+  <artifactId>specification</artifactId>
+  <version>1.0-SNAPSHOT</version>
 </dependency>
 */
 
@@ -106,4 +105,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
         }
         return false;
     }
+
+
+
 }
