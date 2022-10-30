@@ -18,15 +18,6 @@ public class MyFile {
     private Date timeCreated;
     private String ext;
 
-    /**
-     *
-     * @param path hh
-     * @param name hh
-     * @param size asas
-     * @param lastModified
-     * @param timeCreated
-     * @param ext
-     */
 
     public MyFile(String path, String name, long size, Date lastModified, Date timeCreated, String ext) {
         this.path = path;

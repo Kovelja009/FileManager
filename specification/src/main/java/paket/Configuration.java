@@ -12,6 +12,9 @@ import java.util.List;
 @Getter
 @Setter
 public class Configuration {
+    /**
+     *
+     */
     private long size;
     private int file_n;
     private List<String> excludedExt;
