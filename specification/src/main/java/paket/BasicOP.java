@@ -73,6 +73,15 @@ public interface BasicOP{
      */
     boolean download(String item, String destination);
 
+
+    /**
+     *
+     * @param item path of item for uploading
+     * @param destination directory path in local repository
+     * @return true, if file is uploaded, false if not
+     */
+    boolean upload(String item, String destination);
+
     /**
      *
      * @param path file or directory path
