@@ -69,7 +69,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
     @Override
     public void addExtension(String extension) {
         if(!configuration.getExcludedExt().contains(extension))
-            configuration.getExcludedExt().add(extension);
+            configuration.getExcludedExt().add(extension.toLowerCase());
     }
 
     @Override
