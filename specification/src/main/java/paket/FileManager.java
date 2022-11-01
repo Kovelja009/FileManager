@@ -37,7 +37,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
      * @param n_number
      * @return
      */
-    public abstract boolean checkConfig(String parentPath, String ext, long size, int n_number);
+    protected abstract boolean checkConfig(String parentPath, String ext, long size, int n_number);
 //    public void globabladd(T file){
 //        if(checkConfig(file))
 //            add(file);
