@@ -2,6 +2,7 @@ package paket;
 
 import Data.MyFile;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -97,6 +98,6 @@ public interface Search {
      * @param modified created(true) or modified(false)
      * @return files modified or created in period in directory
      */
-    List<MyFile> filterByPeriod(String path, Date StartDate, Date EndDate, boolean modified);
+    List<MyFile> filterByPeriod(String path, LocalDateTime StartDate, LocalDateTime EndDate, boolean modified);
 
 }

@@ -34,10 +34,9 @@ public abstract class FileManager implements BasicOP, Search, Config{
      * @param parentPath
      * @param ext
      * @param size
-     * @param n_number
      * @return
      */
-    protected abstract boolean checkConfig(String parentPath, String ext, long size, int n_number);
+    protected abstract boolean checkConfig(String parentPath, String ext, long size);
 
     /**
      * Save object in the specified collection of the storage.
@@ -86,7 +85,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
     @Override
     public boolean mkdir(String path, String name, int n) {
         for(int i=1;i<=n;i++){
-            if(!mkdir(path,name+i))
+            if(!mkdir(path,name+"_"+ i ))
                 return false;
         }
         return true;
