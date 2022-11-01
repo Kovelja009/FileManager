@@ -38,10 +38,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
      * @return
      */
     protected abstract boolean checkConfig(String parentPath, String ext, long size, int n_number);
-//    public void globabladd(T file){
-//        if(checkConfig(file))
-//            add(file);
-//    }
+
     /**
      * Save object in the specified collection of the storage.
      *
@@ -75,6 +72,24 @@ public abstract class FileManager implements BasicOP, Search, Config{
     @Override
     public void setFile_n(int file_n) {
         configuration.setFile_n(file_n);
+    }
+
+    @Override
+    public boolean mkdir(String path, List<String> names) {
+        for(String name:names){
+            if(!mkdir(path,name))
+                return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean mkdir(String path, String name, int n) {
+        for(int i=1;i<=n;i++){
+            if(!mkdir(path,name+i))
+                return false;
+        }
+        return true;
     }
 
     @Override
