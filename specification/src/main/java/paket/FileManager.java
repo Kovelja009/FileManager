@@ -79,17 +79,17 @@ public abstract class FileManager implements BasicOP, Search, Config{
 
     @Override
     public boolean mkdir(String name) {
-        return mkdir(rootPath, name);
+        return mkdir("", name);
     }
 
     @Override
     public boolean mkdir(List<String> names) {
-        return mkdir(rootPath, names);
+        return mkdir("", names);
     }
 
     @Override
     public boolean mkdir(String name, int n) {
-        return mkdir(rootPath, name, n);
+        return mkdir("", name, n);
     }
 
     @Override
