@@ -34,9 +34,8 @@ public interface Config {
 
     /**
      *
-     * @param path
      */
     // u implementaciji da sacuva u json
-     void saveConfig(String path);
+     void saveConfig();
 
 }
