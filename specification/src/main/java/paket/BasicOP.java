@@ -18,15 +18,20 @@ public interface BasicOP{
      * @return
      */
     boolean mkdir(String path, List<String> names);
+    boolean mkdir(String path, List<String> names,int file_n);
 
     /**
      *
      * @param path
      * @param name
      * @param n
+     * @param file_n true onda se n odnosi na file_n ako je false name1name2name3
      * @return
      */
-    boolean mkdir(String path, String name, int n);
+    boolean mkdir(String path, String name, int n, boolean file_n);
+
+    // pravi name1name2name3i u sve dodaje file_n
+    boolean mkdir(String path, String name, int n, int file_n);
 
     /**
      * make new directory with name on root

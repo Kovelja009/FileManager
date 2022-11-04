@@ -11,6 +11,7 @@ public interface Config {
      * @throws IOException
      */
      boolean createRoot(String path, String name) throws IOException;
+     boolean createRoot(String path, String name, int file_n) throws IOException;
 
     /**
      *
@@ -24,21 +25,10 @@ public interface Config {
 
     /**
      *
-     * @param size
-     */
-     void setSize(long size);
-
-    /**
-     *
      * @param extension
      */
      void addExtension(String extension);
-
-    /**
-     *
-     * @param maxNumber
-     */
-     void setFile_n(int maxNumber);
+     void addFile_n(String path, Integer num);
 
     /**
      *

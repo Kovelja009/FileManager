@@ -4,6 +4,7 @@ import Data.MyFile;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,29 +49,24 @@ public abstract class FileManager implements BasicOP, Search, Config{
     // u implementaciji postaviti polja konfiguracije i pozvati saveConfig
     public boolean createRoot(String path, String name) throws IOException {
         Configuration configuration1 = new Configuration();
-        if(createRoot(path, name, configuration1)){
-            rootPath = path;
-            configuration = configuration1;
-            saveConfig(path);
-            return true;
-        }
-        return false;
+        return createRoot(path, name, configuration1);
     }
 
     @Override
-    public void setSize(long size) {
-        configuration.setSize(size);
+    public boolean createRoot(String path, String name, int file_n) throws IOException {
+        Configuration configuration = new Configuration();
+        addFile_n(getFullPath(path+ File.separator+name),file_n);
+        return createRoot(path,name,configuration);
     }
 
     @Override
     public void addExtension(String extension) {
-        if(!configuration.getExcludedExt().contains(extension))
             configuration.getExcludedExt().add(extension.toLowerCase());
     }
 
     @Override
-    public void setFile_n(int file_n) {
-        configuration.setFile_n(file_n);
+    public void addFile_n(String path, Integer num) {
+        configuration.getFile_n().put(path,num);
     }
 
     @Override
@@ -83,10 +79,39 @@ public abstract class FileManager implements BasicOP, Search, Config{
     }
 
     @Override
-    public boolean mkdir(String path, String name, int n) {
+    public boolean mkdir(String path, List<String> names, int file_n) {
+        for(String name:names){
+            if(!mkdir(path,name))
+                return false;
+            addFile_n(getFullPath(path+File.separator+name),file_n);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean mkdir(String path, String name, int n, boolean file_n) {
+        if(!file_n){
+            for(int i=1;i<=n;i++){
+                if(!mkdir(path,name+"_"+ i ))
+                    return false;
+            }
+            return true;
+        }else{
+            if(mkdir(path,name)){
+                addFile_n(getFullPath(path+File.separator+name),n);
+                return true;
+            }
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean mkdir(String path, String name, int n, int file_n) {
         for(int i=1;i<=n;i++){
             if(!mkdir(path,name+"_"+ i ))
                 return false;
+            addFile_n(getFullPath(path+File.separator+name+"_"+i),file_n);
         }
         return true;
     }
@@ -103,7 +128,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
 
     @Override
     public boolean mkdir(String name, int n) {
-        return mkdir("", name, n);
+        return mkdir("", name, n,false);
     }
 
     @Override
@@ -128,6 +153,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
         return false;
     }
 
+    protected abstract String getFullPath(String path);
 
 
 }

@@ -5,29 +5,30 @@ import lombok.Setter;
 
 import java.io.File;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 @Getter
 @Setter
 public class Configuration {
     /**
-     *
+     * file n je path i num path je apsolutna putanja
      */
     private long size;
-    private int file_n;
-    private List<String> excludedExt;
+     // u svakom direktorijumu maks broj fajlova
+    private Set<String> excludedExt;
+    private Map<String,Integer> file_n;
 
     public Configuration(){
-        excludedExt = new ArrayList<>();
+        excludedExt = new HashSet<>();
         size = 1500000000; // 1.5 GB
-        file_n = 1024;
+        file_n = new HashMap<>();
     }
 
-    public Configuration(long size, int file_n, List<String> excludedExt) {
+    public Configuration(long size, Map<String,Integer>  file_n, Set<String> excludedExt) {
         this.size = size;
         this.file_n = file_n;
         this.excludedExt = excludedExt;
     }
+
 }
