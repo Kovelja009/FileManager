@@ -25,9 +25,9 @@ public interface Config {
 
     /**
      *
-     * @param extension
+     * @param path
+     * @param num
      */
-     void addExtension(String extension);
      void addFile_n(String path, Integer num);
 
     /**
