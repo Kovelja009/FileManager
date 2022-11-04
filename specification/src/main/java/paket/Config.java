@@ -23,6 +23,8 @@ public interface Config {
      */
      boolean createRoot(String path,String name, Configuration configuration) throws IOException;
 
+    boolean createRoot(String path, String name, Configuration configuration, int file_n) throws IOException;
+
     /**
      *
      * @param path

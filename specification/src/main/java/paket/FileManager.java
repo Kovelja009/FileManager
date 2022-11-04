@@ -49,6 +49,14 @@ public abstract class FileManager implements BasicOP, Search, Config{
     }
 
     @Override
+    public boolean createRoot(String path, String name, Configuration configuration, int file_n) throws IOException {
+        if(!createRoot(path, name, configuration))
+            return false;
+        addFile_n(getFullPath(path+ File.separator+name),file_n);
+        return true;
+    }
+
+    @Override
     public void addFile_n(String path, Integer num) {
         configuration.getFile_n().put(path,num);
     }
