@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class FileManager implements BasicOP, Search, Config{
     protected Configuration configuration;
-    private String rootPath;
+    protected String rootPath;
     protected long currSize = 0L;
 
 
