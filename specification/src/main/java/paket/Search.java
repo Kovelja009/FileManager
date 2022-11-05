@@ -9,7 +9,7 @@ import java.util.List;
 public interface Search {
     /**
      * list all files in directory
-     * @param path directory path
+     * @param path directory path relative
      * @return all files in directory
      */
     List<MyFile> searchDir(String path);

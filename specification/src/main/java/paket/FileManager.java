@@ -18,7 +18,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
 
     /**
      *
-     * @param parentPath
+     * @param parentPath apsolutna putanja
      * @param ext
      * @param size
      * @return

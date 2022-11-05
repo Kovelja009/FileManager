@@ -29,4 +29,15 @@ public class MyFile{
         this.timeCreated = timeCreated;
         this.ext = ext;
     }
+
+    @Override
+    public String toString() {
+        return "path='" + path +
+                ", name='" + name +
+                ", size=" + size +
+                ", lastModified=" + lastModified +
+                ", timeCreated=" + timeCreated +
+                ", ext='" + ext  +
+                '\n';
+    }
 }
