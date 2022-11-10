@@ -77,9 +77,9 @@ public interface Search {
      *
      * @param files files for sorting
      * @param metadata
-     * @return sorted list of files by metadata
+     *  sorted list of files by metadata
      */
-    List<MyFile> sortBy(List<MyFile> files, Metadata metadata);
+    void sortBy(List<MyFile> files, Metadata metadata);
  //TODO included in print
     /**
      *

@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class MyFile{
 
-    private String path; // destinacija sa imenom
+    private String path; // destinacija sa imenom apsolutna
     private String name;
     private long size;
     private LocalDateTime lastModified;

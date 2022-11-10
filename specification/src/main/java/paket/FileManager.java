@@ -3,8 +3,7 @@ package paket;
 import Data.MyFile;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 public abstract class FileManager implements BasicOP, Search, Config{
@@ -147,5 +146,25 @@ public abstract class FileManager implements BasicOP, Search, Config{
 
     protected abstract String getFullPath(String path);
 
+    private Comparator<MyFile> getComparator(Metadata metadata){
+        return (o1, o2) -> switch (metadata) {
+            case FULL_NAME -> o1.getPath().compareTo(o2.getPath());
+            case NAME -> o1.getName().compareTo(o2.getName());
+            case EXTENSION -> o1.getExt().compareTo(o2.getExt());
+            case SIZE -> Long.compare(o1.getSize(), o2.getSize());
+            case DATE_MODIFIED -> o1.getLastModified().compareTo(o2.getLastModified());
+            case DATE_CREATED -> o1.getTimeCreated().compareTo(o2.getTimeCreated());
+        };
+    }
 
+    @Override
+    public void sortBy(List<MyFile> files, Metadata metadata) {
+        files.sort(getComparator(metadata));
+    }
+
+    @Override
+    public List<String> filterData(List<MyFile> files, List<Metadata> metadata) {
+
+        return null;
+    }
 }

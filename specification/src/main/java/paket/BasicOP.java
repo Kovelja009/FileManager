@@ -5,7 +5,7 @@ import java.util.List;
 public interface BasicOP{
     /**
      *
-     * @param path
+     * @param path relativna putanja
      * @param name
      * @return
      */
@@ -65,7 +65,7 @@ public interface BasicOP{
     /**
      * moving file or directory from oldPath to newPath
      * @param oldPath
-     * @param newPath
+     * @param newPath destinacija bez imena
      * @return
      */
     boolean move(String oldPath, String newPath);
@@ -82,7 +82,7 @@ public interface BasicOP{
     /**
      *
      * @param item path of item for uploading
-     * @param destination directory path in local repository
+     * @param destination directory path in local repository relative
      * @return true, if file is uploaded, false if not
      */
     boolean upload(String item, String destination);
