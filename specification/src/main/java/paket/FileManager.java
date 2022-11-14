@@ -23,7 +23,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
      * @param size
      * @return
      */
-    abstract boolean checkConfig(String parentPath, String ext, long size) throws MyException;
+    protected abstract boolean checkConfig(String parentPath, String ext, long size) throws MyException;
 
     /**
      * Save object in the specified collection of the storage
@@ -144,7 +144,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
         return false;
     }
 
-    abstract String getFullPath(String path) throws MyException;
+    protected abstract String getFullPath(String path) throws MyException;
 
     private Comparator<MyFile> getComparator(Metadata metadata) throws MyException{
         return (o1, o2) -> switch (metadata) {
