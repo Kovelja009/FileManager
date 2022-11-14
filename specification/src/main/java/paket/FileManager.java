@@ -1,5 +1,6 @@
 package paket;
 
+import Data.MyException;
 import Data.MyFile;
 import java.io.File;
 import java.io.IOException;
@@ -22,23 +23,22 @@ public abstract class FileManager implements BasicOP, Search, Config{
      * @param size
      * @return
      */
-    protected abstract boolean checkConfig(String parentPath, String ext, long size);
+    protected abstract boolean checkConfig(String parentPath, String ext, long size) throws MyException;
 
     /**
-     * Save object in the specified collection of the storage.
-     *
+     * Save object in the specified collection of the storage
      * @param path nesto mojeeeesad sdfasfasfasdfsdaf
      * @param name
      */
     @Override
     // u implementaciji postaviti polja konfiguracije i pozvati saveConfig
-    public boolean createRoot(String path, String name) throws IOException {
+    public boolean createRoot(String path, String name) throws MyException {
         Configuration configuration1 = new Configuration();
         return createRoot(path, name, configuration1);
     }
 
     @Override
-    public boolean createRoot(String path, String name, int file_n) throws IOException {
+    public boolean createRoot(String path, String name, int file_n) throws MyException {
         Configuration configuration = new Configuration();
         if(createRoot(path,name,configuration)){
             addFile_n(getFullPath(path+ File.separator+name),file_n);
@@ -48,7 +48,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
     }
 
     @Override
-    public boolean createRoot(String path, String name, Configuration configuration, int file_n) throws IOException {
+    public boolean createRoot(String path, String name, Configuration configuration, int file_n) throws MyException{
         if(!createRoot(path, name, configuration))
             return false;
         addFile_n(getFullPath(path+ File.separator+name),file_n);
@@ -56,12 +56,12 @@ public abstract class FileManager implements BasicOP, Search, Config{
     }
 
     @Override
-    public void addFile_n(String path, Integer num) {
+    public void addFile_n(String path, Integer num) throws MyException {
         configuration.getFile_n().put(path,num);
     }
 
     @Override
-    public boolean mkdir(String path, List<String> names) {
+    public boolean mkdir(String path, List<String> names) throws MyException {
         for(String name:names){
             if(!mkdir(path,name))
                 return false;
@@ -70,7 +70,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
     }
 
     @Override
-    public boolean mkdir(String path, List<String> names, int file_n) {
+    public boolean mkdir(String path, List<String> names, int file_n) throws MyException {
         for(String name:names){
             if(!mkdir(path,name))
                 return false;
@@ -80,7 +80,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
     }
 
     @Override
-    public boolean mkdir(String path, String name, int n, boolean file_n) {
+    public boolean mkdir(String path, String name, int n, boolean file_n) throws MyException{
         if(!file_n){
             for(int i=1;i<=n;i++){
                 if(!mkdir(path,name+"_"+ i ))
@@ -98,7 +98,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
     }
 
     @Override
-    public boolean mkdir(String path, String name, int n, int file_n) {
+    public boolean mkdir(String path, String name, int n, int file_n) throws MyException{
         for(int i=1;i<=n;i++){
             if(!mkdir(path,name+"_"+ i ))
                 return false;
@@ -108,35 +108,35 @@ public abstract class FileManager implements BasicOP, Search, Config{
     }
 
     @Override
-    public boolean mkdir(String name) {
+    public boolean mkdir(String name) throws MyException {
         return mkdir("", name);
     }
 
     @Override
-    public boolean mkdir(List<String> names) {
+    public boolean mkdir(List<String> names) throws MyException {
         return mkdir("", names);
     }
 
     @Override
-    public boolean mkdir(String name, int n) {
+    public boolean mkdir(String name, int n) throws MyException {
         return mkdir("", name, n,false);
     }
 
     @Override
-    public List<MyFile> searchAll(String path) {
+    public List<MyFile> searchAll(String path) throws MyException {
         List<MyFile> listFile = new ArrayList<>(searchDir(path));
         listFile.addAll(searchSubDir(path));
         return listFile;
     }
 
     @Override
-    public List<MyFile> filterByExt(String ext) {
+    public List<MyFile> filterByExt(String ext) throws MyException {
         return filterByExt(rootPath, ext);
     }
 
     // ako ne sadrzi barem jedno od imena iz liste, vraca false
     @Override
-    public boolean existListOfName(String path, List<String> names) {
+    public boolean existListOfName(String path, List<String> names) throws MyException {
         for(String name:names){
             if(!existName(path, name))
                 return false;
@@ -144,9 +144,9 @@ public abstract class FileManager implements BasicOP, Search, Config{
         return false;
     }
 
-    protected abstract String getFullPath(String path);
+    protected abstract String getFullPath(String path) throws MyException;
 
-    private Comparator<MyFile> getComparator(Metadata metadata){
+    private Comparator<MyFile> getComparator(Metadata metadata) throws MyException{
         return (o1, o2) -> switch (metadata) {
             case FULL_NAME -> o1.getPath().compareTo(o2.getPath());
             case NAME -> o1.getName().compareTo(o2.getName());
@@ -158,12 +158,12 @@ public abstract class FileManager implements BasicOP, Search, Config{
     }
 
     @Override
-    public void sortBy(List<MyFile> files, Metadata metadata) {
+    public void sortBy(List<MyFile> files, Metadata metadata) throws MyException {
         files.sort(getComparator(metadata));
     }
 
     @Override
-    public List<String> filterData(List<MyFile> files, List<Metadata> metadata) {
+    public List<String> filterData(List<MyFile> files, List<Metadata> metadata) throws MyException {
         List<String> fil = new ArrayList<>();
         for(MyFile myFile:files){
             StringBuilder str= new StringBuilder("File:");

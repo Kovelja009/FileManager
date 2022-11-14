@@ -1,5 +1,7 @@
 package paket;
 
+import Data.MyException;
+
 import java.util.List;
 
 public interface BasicOP{
@@ -9,7 +11,7 @@ public interface BasicOP{
      * @param name
      * @return
      */
-    boolean mkdir(String path, String name);
+    boolean mkdir(String path, String name) throws MyException;
 
     /**
      *
@@ -17,8 +19,8 @@ public interface BasicOP{
      * @param names
      * @return
      */
-    boolean mkdir(String path, List<String> names);
-    boolean mkdir(String path, List<String> names,int file_n);
+    boolean mkdir(String path, List<String> names) throws MyException;
+    boolean mkdir(String path, List<String> names,int file_n) throws MyException;
 
     /**
      *
@@ -28,24 +30,24 @@ public interface BasicOP{
      * @param file_n true onda se n odnosi na file_n ako je false name1name2name3
      * @return
      */
-    boolean mkdir(String path, String name, int n, boolean file_n);
+    boolean mkdir(String path, String name, int n, boolean file_n) throws MyException;
 
     // pravi name1name2name3i u sve dodaje file_n
-    boolean mkdir(String path, String name, int n, int file_n);
+    boolean mkdir(String path, String name, int n, int file_n) throws MyException;
 
     /**
      * make new directory with name on root
      * @param name
      * @return
      */
-    boolean mkdir (String name);
+    boolean mkdir (String name) throws MyException;
 
     /**
      * make new directories with names on root
      * @param names
      * @return
      */
-    boolean mkdir(List<String> names);
+    boolean mkdir(List<String> names) throws MyException ;
 
     /**
      * make n new directories with name formated "name i" i goes from 1 to n on root
@@ -53,14 +55,14 @@ public interface BasicOP{
      * @param n
      * @return
      */
-    boolean mkdir(String name, int n);
+    boolean mkdir(String name, int n) throws MyException;
 
     /**
      * delete file or directory
      * @param path
      * @return
      */
-    boolean delete(String path);
+    boolean delete(String path) throws MyException;
 
     /**
      * moving file or directory from oldPath to newPath
@@ -68,7 +70,7 @@ public interface BasicOP{
      * @param newPath destinacija bez imena
      * @return
      */
-    boolean move(String oldPath, String newPath);
+    boolean move(String oldPath, String newPath) throws MyException;
 
     /**
      *
@@ -76,7 +78,7 @@ public interface BasicOP{
      * @param destination directory path in local repository
      * @return true, if file is dowloaded, false if not
      */
-    boolean download(String item, String destination);
+    boolean download(String item, String destination) throws MyException;
 
 
     /**
@@ -85,7 +87,7 @@ public interface BasicOP{
      * @param destination directory path in local repository relative
      * @return true, if file is uploaded, false if not
      */
-    boolean upload(String item, String destination);
+    boolean upload(String item, String destination) throws MyException;
 
     /**
      *
@@ -93,5 +95,5 @@ public interface BasicOP{
      * @param newName new name for file or directory
      * @return true, if file is renamed
      */
-    boolean rename(String path, String newName);
+    boolean rename(String path, String newName) throws MyException;
 }
