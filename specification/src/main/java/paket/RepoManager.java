@@ -6,4 +6,9 @@ public class RepoManager {
     public static void registerManager(FileManager fileManager){
         RepoManager.fileManager=fileManager;
     }
+
+    public static FileManager getRepo(){
+        return fileManager;
+    }
+
 }
