@@ -94,7 +94,7 @@ public interface Search {
      * @param path directory path
      * @param StartDate
      * @param EndDate
-     * @param modified created(true) or modified(false)
+     * @param modified created(false) or modified(true)
      * @return files modified or created in period in directory
      */
     List<MyFile> filterByPeriod(String path, LocalDateTime StartDate, LocalDateTime EndDate, boolean modified);

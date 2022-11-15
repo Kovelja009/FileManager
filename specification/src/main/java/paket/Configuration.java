@@ -28,4 +28,10 @@ public class Configuration {
         this.excludedExt = excludedExt;
     }
 
+    public Configuration(long size, Set<String> excludedExt) {
+        this.size = size;
+        file_n = new HashMap<>();
+        this.excludedExt = excludedExt;
+    }
+
 }
