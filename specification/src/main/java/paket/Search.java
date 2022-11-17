@@ -16,7 +16,7 @@ public interface Search {
     /**
      *
      * @param path directory path
-     * @return all files in every subdirectory of directory
+     * @return all files in every subdirectory of a directory
      */
     List<MyFile> searchSubDir(String path);
 
@@ -28,14 +28,14 @@ public interface Search {
     List<MyFile> searchAll(String path);
 
     /**
-     *
+     * returns all the files with certain extension
      * @param ext extension for filter
-     * @return files with extension in whole storage
+     * @return files with extension in a whole storage
      */
     List<MyFile> filterByExt(String ext);
 
     /**
-     *
+     * returns all the files with certain extension
      * @param path directory path
      * @param ext extension for filter
      * @return files with extension in directory
@@ -43,14 +43,14 @@ public interface Search {
     List<MyFile> filterByExt(String path, String ext);
 
     /**
-     *
+     * returns files which contain given substring in a name
      * @param substr part of name of file
-     * @return files which contains substring in name
+     * @return files which contains substring in a name
      */
     List<MyFile> searchSubstring(String substr);
 
     /**
-     *
+     * returns whether directory contains file with a certain name or not
      * @param path directory path
      * @param name file name
      * @return does directory contain file with name
@@ -58,7 +58,7 @@ public interface Search {
     boolean existName(String path, String name);
 
     /**
-     *
+     * returns whether directory contains files with a certain names or not
      * @param path directory path
      * @param names list of names for files
      * @return does directory contain all files with names
@@ -66,7 +66,7 @@ public interface Search {
     boolean existListOfName(String path, List<String> names);
 
     /**
-     *
+     * returns list of directories with names file
      * @param name file name
      * @return list of paths of directories with named file
      */
@@ -79,7 +79,6 @@ public interface Search {
      *  sorted list of files by metadata
      */
     void sortBy(List<MyFile> files, Metadata metadata);
- //TODO included in print
     /**
      *
      * @param files files for filter
@@ -92,8 +91,8 @@ public interface Search {
     /**
      *
      * @param path directory path
-     * @param StartDate
-     * @param EndDate
+     * @param StartDate can be created or modified date
+     * @param EndDate can be created or modified date
      * @param modified created(false) or modified(true)
      * @return files modified or created in period in directory
      */

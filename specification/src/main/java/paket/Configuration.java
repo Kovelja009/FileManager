@@ -8,9 +8,7 @@ import java.util.*;
 @Getter
 @Setter
 public class Configuration {
-    /**
-     * file n je path i num path je apsolutna putanja
-     */
+
     private long size;
      // u svakom direktorijumu maks broj fajlova
     private Set<String> excludedExt;
