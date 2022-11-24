@@ -168,12 +168,12 @@ public abstract class FileManager implements BasicOP, Search, Config{
             for(Metadata m:metadata){
                 str.append(" ");
                 switch (m){
-                    case FULL_NAME:     str.append(myFile.getPath());
-                    case NAME:          str.append(myFile.getName());
-                    case SIZE:          str.append(myFile.getSize());
-                    case DATE_CREATED:  str.append(myFile.getTimeCreated());
-                    case DATE_MODIFIED: str.append(myFile.getLastModified());
-                    case EXTENSION:     str.append(myFile.getExt());
+                    case FULL_NAME ->     str.append(myFile.getPath());
+                    case NAME ->          str.append(myFile.getName());
+                    case SIZE ->          str.append(myFile.getSize());
+                    case DATE_CREATED ->  str.append(myFile.getTimeCreated());
+                    case DATE_MODIFIED -> str.append(myFile.getLastModified());
+                    case EXTENSION ->     str.append(myFile.getExt());
                 }
             }
             fil.add(String.valueOf(str));
