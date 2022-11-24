@@ -4,6 +4,7 @@ import Data.MyFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 public interface Search {
     /**
@@ -35,7 +36,7 @@ public interface Search {
     List<MyFile> filterByExt(String ext);
 
     /**
-     * returns all the files with certain extension
+     * returns all the files with certain extension in a certain directory
      * @param path directory path
      * @param ext extension for filter
      * @return files with extension in directory
@@ -85,7 +86,7 @@ public interface Search {
      * @param metadata list of metadata which included in print
      * @return shows only data listed in metadata for files
      */
-    List<String> filterData(List<MyFile> files, List<Metadata> metadata);
+    List<String> filterData(List<MyFile> files, Set<Metadata> metadata);
 
 
     /**

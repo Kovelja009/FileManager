@@ -161,7 +161,7 @@ public abstract class FileManager implements BasicOP, Search, Config{
     }
 
     @Override
-    public List<String> filterData(List<MyFile> files, List<Metadata> metadata){
+    public List<String> filterData(List<MyFile> files, Set<Metadata> metadata){
         List<String> fil = new ArrayList<>();
         for(MyFile myFile:files){
             StringBuilder str= new StringBuilder("File:");
